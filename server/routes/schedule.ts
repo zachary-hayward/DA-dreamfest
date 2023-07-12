@@ -1,10 +1,9 @@
-const express = require('express')
+import express from 'express'
 
-const { validateDay } = require('./helpers')
-const db = require('../db')
+import { validateDay } from './helpers'
+import * as db from '../db'
 
 const router = express.Router()
-module.exports = router
 
 // GET /schedule/friday
 router.get('/:day', (req, res) => {
@@ -39,3 +38,5 @@ router.get('/:day', (req, res) => {
 
   res.render('showDay', viewData)
 })
+
+export default router

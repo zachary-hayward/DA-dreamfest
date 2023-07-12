@@ -1,17 +1,17 @@
-const { join } = require('node:path')
-const express = require('express')
-const hbs = require('express-handlebars')
+import { join } from 'node:path'
+import express from 'express'
+import * as hbs from 'express-handlebars'
 
-const locationRoutes = require('./routes/locations.js')
-const scheduleRoutes = require('./routes/schedule.js')
-const eventRoutes = require('./routes/events.js')
+import locationRoutes from './routes/locations'
+import scheduleRoutes from './routes/schedule'
+import eventRoutes from './routes/events'
 
 /*
  * create the server
  *************************/
 
 const server = express()
-module.exports = server
+export default server
 
 /*
  * configure the server

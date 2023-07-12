@@ -1,9 +1,8 @@
-const express = require('express')
+import express from 'express'
 
-const db = require('../db')
+import * as db from '../db'
 
 const router = express.Router()
-module.exports = router
 
 // GET /locations
 router.get('/', (req, res) => {
@@ -51,3 +50,5 @@ router.post('/edit', (req, res) => {
 
   res.redirect('/locations')
 })
+
+export default router

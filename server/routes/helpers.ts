@@ -1,10 +1,4 @@
-const eventDays = ['friday', 'saturday', 'sunday']
-
-module.exports = {
-  eventDays,
-  capitalise,
-  validateDay,
-}
+export const eventDays = ['friday', 'saturday', 'sunday']
 
 /**
  * Takes a string and capitalises the first letter.
@@ -13,7 +7,7 @@ module.exports = {
  * @param {string} name
  * @returns string
  */
-function capitalise(name) {
+export function capitalise(name: string) {
   return name[0].toUpperCase() + name.substring(1)
 }
 
@@ -26,7 +20,10 @@ function capitalise(name) {
  * @param {string[]} days
  * @returns string
  */
-function validateDay(day, days = eventDays) {
+export function validateDay(
+  day: string | undefined,
+  days: string[] = eventDays
+) {
   // Use the first day as the default value if the day argument isn't valid
   if (typeof day !== 'string') return days[0]
   if (!days.includes(day)) return days[0]

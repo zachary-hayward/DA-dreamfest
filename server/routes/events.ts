@@ -1,10 +1,10 @@
-const express = require('express')
+import express from 'express'
 
-const { eventDays, capitalise, validateDay } = require('./helpers')
-const db = require('../db')
+import { eventDays, capitalise, validateDay } from './helpers'
+import * as db from '../db'
 
 const router = express.Router()
-module.exports = router
+export default router
 
 // GET /events/add/friday
 router.get('/add/:day', (req, res) => {
