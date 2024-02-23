@@ -9,7 +9,7 @@ export default function useCreateEvent() {
       await request.post('/api/v1/events').send(data)
     },
     onSuccess: async () => {
-      queryClient.invalidateQueries(['schedule'])
+      queryClient.invalidateQueries({ queryKey: ['schedule'] })
     },
   })
 }

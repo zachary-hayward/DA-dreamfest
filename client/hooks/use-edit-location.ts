@@ -11,7 +11,7 @@ export default function useEditLocation() {
       await request.patch(`/api/v1/locations/${id}`).send({ name, description })
     },
     onSuccess: (_, { id }: Location) => {
-      queryClient.invalidateQueries(['location', id])
+      queryClient.invalidateQueries({ queryKey: ['location', id] })
     },
   })
 }

@@ -9,7 +9,7 @@ export default function useDeleteEvent(id: number) {
       await request.delete(`/api/v1/events/${id}`)
     },
     onSuccess: async () => {
-      queryClient.invalidateQueries(['schedule'])
+      queryClient.invalidateQueries({ queryKey: ['schedule'] })
     },
   })
 }

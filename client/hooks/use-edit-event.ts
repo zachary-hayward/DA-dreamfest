@@ -10,8 +10,8 @@ export default function useEditEvent(id: number) {
       await request.patch(`/api/v1/events/${id}`).send(values)
     },
     onSuccess: async () => {
-      queryClient.invalidateQueries(['event', id])
-      queryClient.invalidateQueries(['schedule'])
+      queryClient.invalidateQueries({ queryKey: ['event', id] })
+      queryClient.invalidateQueries({ queryKey: ['schedule'] })
     },
   })
 }
