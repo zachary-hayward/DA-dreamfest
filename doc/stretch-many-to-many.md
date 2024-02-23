@@ -15,7 +15,7 @@ To model this, we'll use a migration to create two tables.
 
 - id
 - name
-- homepage
+- website
 
 `performers_events` will connect performers and events, so it will only have these fields
 
@@ -52,21 +52,21 @@ async function getPerformersWithEvents() {
 
 Create a route so we can just take a look at this, you might notice that our performer who isn't going to any events is missing from the list. That is because they do not exist in the join.
 
-If we want a query that will include _all_ our performers, we need to use an outer join
+If we want a query that will include _all_ our performers, we need to use an [left join](<https://en.wikipedia.org/wiki/Join_(SQL)#Left_outer_join>). This type of join includes an example of every row in the left side of the join, no matter what.
 
 ```js
-async function getPerformersWithEvents() {
-  const rows = await db('perfomers')
+export async function getPerformersWithEvents() {
+  const rows = await connection('performers')
     .select(
-      'perfomers.*',
+      'performers.*',
       'events.id as event_id',
       'events.name as event_name',
       'events.description as event_description',
       'events.day as event_day',
       'events.time as event_time'
     )
-    .outerJoin('performers_events', ' perfomers.id', 'performers_id')
-    .outerJoin('events', 'events.id', 'event_id')
+    .leftJoin('performers_events', 'performers.id', 'performer_id')
+    .leftJoin('events', 'events.id', 'event_id')
 
   return rows
 }
@@ -84,9 +84,10 @@ const performers = new Map()
 for (const row of rows) {
   let performer = performers.get(row.id)
   if (!performer) {
+    const { id, name, website } = row
     // if this performer is not in our result set yet
     // we'll create it and associate it with its id
-    performer = { id, name, homepage, events: [] }
+    performer = { id, name, website, events: [] }
     performers.set(id, performer)
   }
 
