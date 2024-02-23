@@ -101,11 +101,11 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 ### 4. Submit the form
 
 - [ ] Submitting the "Edit Location" form should send an HTTP PATCH request which will hit your `PATCH /api/v1/locations` route, in `routes/locations.ts`
-  <details style="padding-left: 2em">
-    <summary>making a PATCH request</summary>
-  You can import the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
-  mutation that makes PATCH requests to a specific location.
-  </details>
+<details style="padding-left: 2em">
+  <summary>making a PATCH request</summary>
+You can import the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
+mutation that makes PATCH requests to a specific location.
+</details>
 - [ ] Build an `updateLocation` function in `server/db/index.ts` with an `updatedLocation` parameter (note the "d" in "updateD")
   <details style="padding-left: 2em">
     <summary>More about the <code>updateLocation</code> function</summary>
@@ -154,6 +154,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
   </details>
 
 - [ ] Build a `deleteEvent` function with an `id` parameter
+
 ---
 
 ## Stretch
@@ -201,7 +202,8 @@ You'll need to create new things in this step, but referring to existing feature
 4. Create a `POST /api/v1/locations` route in `routes/locations.ts`
 5. Build an `addNewLocation` function with a `locationInfo` parameter
 6. Create a hook with `useMutation` to connect our `NewLocation` component to the API
-  - Refer to `client/hooks/use-create-event.ts` when writing your hook function
+
+- Refer to `client/hooks/use-create-event.ts` when writing your hook function
 </details>
 <br />
 
@@ -249,28 +251,28 @@ Consider writing a separate db function (perhaps `getAllLocationsWithDesc`?) to 
 <details>
   <summary>Optimising images</summary>
 
-  Another way to improve the performance of a site is by making sure images are fit for purpose. Saving images to the best format and resolution will ensure you don't unnecessarily slow down the experience for users. For more detail, check out [this resource](https://web.dev/fast/#optimize-your-images).
+Another way to improve the performance of a site is by making sure images are fit for purpose. Saving images to the best format and resolution will ensure you don't unnecessarily slow down the experience for users. For more detail, check out [this resource](https://web.dev/fast/#optimize-your-images).
 
 </details>
 
 <details>
   <summary>Linting and formatting</summary>
 
-  We've already put in place automatic tools that help to format your code in a consistent way. This helps others read your code and makes your life easier, too! If you've ever noticed that whitespace or quotes change when you save a file, you've seen Prettier in action. In addition, we've set up a set of "lint" rules which may have caused angry-looking underlines on your code. You can explicitly cause eslint to run and output errors and warnings by running `npm run lint` from the command line. Fix any problems it informs you of, and your code will be that much cleaner.
+We've already put in place automatic tools that help to format your code in a consistent way. This helps others read your code and makes your life easier, too! If you've ever noticed that whitespace or quotes change when you save a file, you've seen Prettier in action. In addition, we've set up a set of "lint" rules which may have caused angry-looking underlines on your code. You can explicitly cause eslint to run and output errors and warnings by running `npm run lint` from the command line. Fix any problems it informs you of, and your code will be that much cleaner.
 
 </details>
 
 <details>
   <summary>Separation of concerns</summary>
 
-  Separation of concerns is the idea that a function, component, or file should have a single responsibility. Having CSS in a separate file from your HTML is one early example. You will likely have been doing this without thinking too much about it, but check to make sure that your functions and files aren't doing too much. If you find a function that's doing several things, refactor it! Separation of concerns helps keep code maintainable and testable.
+Separation of concerns is the idea that a function, component, or file should have a single responsibility. Having CSS in a separate file from your HTML is one early example. You will likely have been doing this without thinking too much about it, but check to make sure that your functions and files aren't doing too much. If you find a function that's doing several things, refactor it! Separation of concerns helps keep code maintainable and testable.
 
 </details>
 
-## Submitting this Challenge for Marking
+### 13. Adding a many-to-many relationship
 
-This challenge can be used for the following trello assessments: 
-- **CP02 - Use two or more software quality practises to improve an application**
+[Follow the guide](./doc/stretch-many-to-many.md) to add a many-to-many relationship
+
 ---
 
 [Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=dreamfest)
