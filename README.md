@@ -82,7 +82,7 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 3. Show the form
 
-- [ ] Look at the `GET /api/v1/locations/4/edit` route in `server/routes/locations.ts`
+- [ ] Look at the `GET /api/v1/locations/:id` route in `server/routes/locations.ts`
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
