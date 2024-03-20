@@ -56,11 +56,6 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 - [ ] Have a look at the `GET /api/v1/locations` route in `server/routes/locations.ts`
 - [ ] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
 - [ ] Complete the route using your new database function
-<details style="padding-left: 2em">
-  <summary>Tip</summary>
-  
-  Don't forget to put the `viewData` and `res.render` call in your callback once you have the locations from the database
-</details>
 
 ### 2. Show events for a day
 
@@ -100,10 +95,10 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 4. Submit the form
 
-- [ ] Submitting the "Edit Location" form should send an HTTP PATCH request which will hit your `PATCH /api/v1/locations` route, in `routes/locations.ts`
+- [ ] Submitting the "Edit Location" form should send an HTTP PATCH request which will hit your `PATCH /api/v1/locations/:id` route, in `routes/locations.ts`
 <details style="padding-left: 2em">
   <summary>making a PATCH request</summary>
-You can import the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
+This component uses the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
 mutation that makes PATCH requests to a specific location.
 </details>
 - [ ] Build an `updateLocation` function in `server/db/index.ts` with an `updatedLocation` parameter (note the "d" in "updateD")
@@ -117,21 +112,9 @@ mutation that makes PATCH requests to a specific location.
 
 ## Adding and deleting events
 
-### 5. Populate the drop-down in the form
+### 5. Submit the form
 
-- [ ] Supply the "Add New Event" form with a list of all the locations to populate the drop-down
-<details style="padding-left: 2em">
-  <summary>More about the locations drop-down</summary>
-  
-  Currently the options are hard-coded, but we want them to come from the database (the days of the week are hard-coded too, but we're not going to change those). The `GET /events/add/:day` route in `routes/events.ts` needs to obtain the list of locations from the database, and supply them to the form. 
-  
-  You've already written a `getAllLocations` function, now use it in your route. 
-  * Does your form need the location descriptions? Will it work if you include them anyway (so that you don't need to change your function)? 
-</details>
-
-### 6. Submit the form
-
-- [ ] Submitting the "Add New Event" form should send an HTTP POST request which will hit the `POST /events/add` route, in `routes/events.ts`
+- [ ] Submitting the "Add New Event" form should send an HTTP POST request which will hit the `POST /events` route, in `routes/events.ts`
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
@@ -141,7 +124,7 @@ mutation that makes PATCH requests to a specific location.
 
 - [ ] Build an `addNewEvent` function with an `event` parameter
 
-### 7. Delete events
+### 6. Delete events
 
 - [ ] Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.ts`
   <details style="padding-left: 2em">
@@ -149,7 +132,7 @@ mutation that makes PATCH requests to a specific location.
     
     Within the site, you will find the delete button on the same page you edit an event
 
-  - Note that the "Edit event" page is currently displaying hard-coded details in the form (you'll fix this in the next step), but to check if this page is correct at this stage, click "Edit event" on (for example) the "Cutest Puppy Awards" card, you should then find yourself at `/events/4/edit`, 4 being the id of the event (as seen in your seeds).
+  - Note that the "Edit event" page is currently displaying hard-coded details in the form (you'll fix this in the next step), but to check if this page is correct at this stage, click "Edit event" on (for example) the "Cutest Puppy Awards" card, you should then find yourself at the front-end route `/events/4/edit`, 4 being the id of the event (as seen in your seeds).
   - The "Delete event" button should be able to delete "Cutest Puppy Awards" (id 4) even though the displayed details are for "Slushie Apocalypse I" as you will find it uses the id provided by the url, not the hardcoded data.
   </details>
 
@@ -159,7 +142,7 @@ mutation that makes PATCH requests to a specific location.
 
 ## Stretch
 
-### 8. Edit events
+### 7. Edit events
 
 <details>
   <summary>More about editing events</summary>
@@ -179,11 +162,11 @@ mutation that makes PATCH requests to a specific location.
 **Submit the form**
 
 5. Build an `updateEvent` function with an `updatedEvent` parameter
-6. Update `POST /events/edit` in `routes/events.ts`
+6. Update `PATCH /events/:id` in `routes/events.ts`
 </details>
 <br />
 
-### 9. Add new locations
+### 8. Add new locations
 
 <details>
   <summary>More about adding locations</summary>
@@ -207,7 +190,7 @@ You'll need to create new things in this step, but referring to existing feature
 </details>
 <br />
 
-### 10. Delete locations
+### 9. Delete locations
 
 <details>
   <summary>More about deleting locations</summary>
@@ -227,7 +210,7 @@ _ If you delete a location that has an event, what happens to the event? Why?_
 </details>
 <br />
 
-### 11. Test helper functions
+### 10. Test helper functions
 
 <details>
   <summary>More about testing helpers</summary>
@@ -237,7 +220,7 @@ Some tests have been created in `helpers.test.ts` but they haven't been written 
 </details>
 <br />
 
-### 12. Quality measures
+### 11. Quality measures
 
 <details>
   <summary>Optimising database queries</summary>
@@ -269,7 +252,7 @@ Separation of concerns is the idea that a function, component, or file should ha
 
 </details>
 
-### 13. Adding a many-to-many relationship
+### 12. Adding a many-to-many relationship
 
 [Follow the guide](./doc/stretch-many-to-many.md) to add a many-to-many relationship
 
