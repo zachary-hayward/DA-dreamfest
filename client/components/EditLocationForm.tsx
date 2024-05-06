@@ -1,4 +1,4 @@
-import { useState, useCallback, ChangeEvent, FormEvent } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
 import useEditLocation from '../hooks/use-edit-location.ts'
 
 interface Props {
@@ -15,24 +15,20 @@ export default function EditLocationForm({ id, name, description }: Props) {
 
   const updateLocation = useEditLocation()
 
-  const handleChange = useCallback(
-    (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = evt.currentTarget
-      setFormState((prev) => ({
-        ...prev,
-        [name]: value,
-      }))
-    },
-    []
-  )
+  const handleChange = (
+    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = evt.currentTarget
+    setFormState((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
 
-  const handleSubmit = useCallback(
-    async (e: FormEvent) => {
-      e.preventDefault()
-      updateLocation.mutate({ id, ...formState })
-    },
-    [formState]
-  )
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    updateLocation.mutate({ id, ...formState })
+  }
 
   return (
     <form

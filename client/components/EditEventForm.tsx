@@ -1,4 +1,4 @@
-import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react'
 import { useLocations } from '../hooks/api.ts'
 import { EventData } from '../../models/Event.ts'
 import LoadingIndicator from './LoadingIndicator.tsx'
@@ -26,28 +26,22 @@ export default function EditEventForm({
     time,
   })
 
-  const handleChange = useCallback(
-    (
-      evt: ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    ) => {
-      const { name, value } = evt.target
-      setFormState((prev) => ({
-        ...prev,
-        [name]: value,
-      }))
-    },
-    []
-  )
+  const handleChange = (
+    evt: ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = evt.target
+    setFormState((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
 
-  const handleSubmit = useCallback(
-    (evt: FormEvent) => {
-      evt.preventDefault()
-      onSubmit(formState)
-    },
-    [formState]
-  )
+  const handleSubmit = (evt: FormEvent) => {
+    evt.preventDefault()
+    onSubmit(formState)
+  }
 
   if (locations.isLoading) {
     return <LoadingIndicator />

@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { EventData } from '../../models/Event'
 import EditEventForm from './EditEventForm'
@@ -15,14 +14,14 @@ export default function EditEvent() {
   const deleteEvent = useDeleteEvent(id)
   const navigate = useNavigate()
 
-  const handleSubmit = useCallback(async (formData: EventData) => {
+  const handleSubmit = async (formData: EventData) => {
     editEvent.mutateAsync({ id, ...formData })
-  }, [])
+  }
 
-  const handleDelete = useCallback(async () => {
+  const handleDelete = async () => {
     deleteEvent.mutate()
     navigate(`/schedule/friday`)
-  }, [])
+  }
 
   if (event.isLoading) {
     return <LoadingIndicator />
