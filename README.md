@@ -116,7 +116,7 @@ mutation that makes PATCH requests to a specific location.
 
 ## Adding and deleting events
 
-### 5. Submit the form
+### 5. Add a new event
 
 - [ ] Submitting the "Add New Event" form should send an HTTP POST request which will hit the `POST /events` route, in `routes/events.ts`
   <details style="padding-left: 2em">
