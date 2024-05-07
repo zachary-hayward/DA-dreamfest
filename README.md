@@ -61,12 +61,14 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 - [ ] Have a look at the `GET /api/v1/schedule/:day` route in `server/routes/schedule.js`
 - [ ] Build a `getEventsByDay` function with a `day` parameter. Today we'll put all our database functions in `db/index.ts`
+- [ ] Complete the route using your new database function
+
   <details style="padding-left: 2em">
     <summary>More about the <code>getEventsByDay</code> function</summary>
 
   1. JOIN the `events` and `locations` tables WHERE `events.location_id = locations.id`
   2. Filter (`where`) the results for only events where the day matches. Remember to pass the `day` when you call your function!
-  3. Note that the `events` and `locations` tables both have `name`, `description`, and `id` columns. How can you specify which one to use when? What is the shape of the data that the handlebars template is expecting? **Hint: look at the shape of the hard-coded sample data**
+  3. Note that the `events` and `locations` tables both have `name`, `description`, and `id` columns. How can you specify which one to use when? What is the shape of the data that the component is expecting? **Hint: look at the shape of the hard-coded sample data in `server/routes/schedule.js`**
 
   If some data isn't displaying in the app, try using `console.log` to look at your data, so that you can compare it to the sample data
 
