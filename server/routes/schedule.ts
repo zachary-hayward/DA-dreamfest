@@ -9,7 +9,7 @@ const router = express.Router()
 router.get('/:day', async (req, res, next) => {
   try {
     const day = validateDay(req.params.day)
-    // TODO: replace this data with the results of calling  db.getEventsForDay
+    // TODO: replace this data with the results of calling db.getEventsByDay
     const events = [
       {
         id: 1,
