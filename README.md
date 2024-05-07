@@ -103,7 +103,9 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 This component uses the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
 mutation that makes PATCH requests to a specific location.
 </details>
+
 - [ ] Build an `updateLocation` function in `server/db/index.ts` with an `updatedLocation` parameter (note the "d" in "updateD")
+
   <details style="padding-left: 2em">
     <summary>More about the <code>updateLocation</code> function</summary>
 
