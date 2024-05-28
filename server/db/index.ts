@@ -10,6 +10,29 @@ const config = knexFile[environment]
 export const connection = knex(config)
 
 export async function getAllLocations() {
-  const locations: unknown[] = [] // TODO: replace this with your knex query
+  const locations: unknown[] = await connection('locations').select()
   return locations as Location[]
+}
+
+export async function getEventsByDay(day: string) {
+  const events: unknown[] = await connection('events').select().where({day})
+  return events as EventData[]
+}
+
+export async function getLocationById(id: number) {
+  const location: unknown = await connection('locations').select().where({id}).first()
+  return location as Location
+}
+
+export async function updateLocation(id: number, name: string, description: string) {
+  const location: unknown = await connection('locations')
+    .where({id})
+    .update({name, description})
+  return location as Location
+}
+
+export async function addNewEvent(event: EventData) {
+  const newEventId: unknown[] = await connection('events')
+    .insert({name: event.name, description: event.description, time: event.time, day: event.day, location_id: event.locationId})
+  return newEventId[0] as number
 }

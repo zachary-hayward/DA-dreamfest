@@ -24,8 +24,8 @@ Let's get stuck in!
 
 ### 0. Installation and migrations
 
-- [ ] Clone this repo and `cd` into the new directory
-- [ ] Install packages, run migrations and seeds, and start the dev server with `npm run dev`
+- [x] Clone this repo and `cd` into the new directory
+- [x] Install packages, run migrations and seeds, and start the dev server with `npm run dev`
   <details style="padding-left: 2em">
     <summary>Tip</summary>
 
@@ -41,7 +41,7 @@ Let's get stuck in!
   This will create and populate the database with the existing migrations and seeds, and start the server.
   </details>
 
-- [ ] Get familiar with the current state of the app and the existing codebase
+- [x] Get familiar with the current state of the app and the existing codebase
 
 ### What's included
 
@@ -53,15 +53,15 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 1. Show all locations
 
-- [ ] Have a look at the `GET /api/v1/locations` route in `server/routes/locations.ts`
-- [ ] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
-- [ ] Complete the route using your new database function
+- [x] Have a look at the `GET /api/v1/locations` route in `server/routes/locations.ts`
+- [x] Complete the `getAllLocations` function in `db/index.ts` and have it return a Promise that resolves to an array of locations from the database
+- [x] Complete the route using your new database function
 
 ### 2. Show events for a day
 
-- [ ] Have a look at the `GET /api/v1/schedule/:day` route in `server/routes/schedule.js`
-- [ ] Build a `getEventsByDay` function with a `day` parameter. Today we'll put all our database functions in `db/index.ts`
-- [ ] Complete the route using your new database function
+- [x] Have a look at the `GET /api/v1/schedule/:day` route in `server/routes/schedule.js`
+- [x] Build a `getEventsByDay` function with a `day` parameter. Today we'll put all our database functions in `db/index.ts`
+- [x] Complete the route using your new database function
 
   <details style="padding-left: 2em">
     <summary>More about the <code>getEventsByDay</code> function</summary>
@@ -79,15 +79,15 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 3. Show the form
 
-- [ ] Look at the `GET /api/v1/locations/:id` route in `server/routes/locations.ts`
+- [x] Look at the `GET /api/v1/locations/:id` route in `server/routes/locations.ts`
 <details style="padding-left: 2em">
   <summary>Tip</summary>
   
   This route supplies the current data to the form, ready for the user to edit it.
 </details>
 
-- [ ] Build a `getLocationById` function in `server/db/index.ts` with an `id` parameter
-- [ ] Be sure the form is being populated correctly
+- [x] Build a `getLocationById` function in `server/db/index.ts` with an `id` parameter
+- [x] Be sure the form is being populated correctly
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
@@ -97,14 +97,14 @@ The application is usable... _ish_. You can try anything and the app shouldn't b
 
 ### 4. Submit the form
 
-- [ ] Submitting the "Edit Location" form should send an HTTP PATCH request which will hit your `PATCH /api/v1/locations/:id` route, in `routes/locations.ts`
+- [x] Submitting the "Edit Location" form should send an HTTP PATCH request which will hit your `PATCH /api/v1/locations/:id` route, in `routes/locations.ts`
 <details style="padding-left: 2em">
   <summary>making a PATCH request</summary>
 This component uses the `useEditLocation` hook, from `client/hooks/api.ts`, this provides a react-query
 mutation that makes PATCH requests to a specific location.
 </details>
 
-- [ ] Build an `updateLocation` function in `server/db/index.ts` with an `updatedLocation` parameter (note the "d" in "updateD")
+- [x] Build an `updateLocation` function in `server/db/index.ts` with an `updatedLocation` parameter (note the "d" in "updateD")
 
   <details style="padding-left: 2em">
     <summary>More about the <code>updateLocation</code> function</summary>
@@ -118,7 +118,7 @@ mutation that makes PATCH requests to a specific location.
 
 ### 5. Add a new event
 
-- [ ] Submitting the "Add New Event" form should send an HTTP POST request which will hit the `POST /events` route, in `routes/events.ts`
+- [x] Submitting the "Add New Event" form should send an HTTP POST request which will hit the `POST /events` route, in `routes/events.ts`
   <details style="padding-left: 2em">
     <summary>Tips</summary>
 
@@ -126,7 +126,7 @@ mutation that makes PATCH requests to a specific location.
   - You may also want to ensure that `location_id` has a type of `Number` rather than `String`
   </details>
 
-- [ ] Build an `addNewEvent` function with an `event` parameter
+- [x] Build an `addNewEvent` function with an `event` parameter
 
 ### 6. Delete events
 
