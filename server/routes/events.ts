@@ -49,7 +49,9 @@ router.get('/:id', async (req, res, next) => {
     if (!event || !event.id) {
       res.status(404)
     }
-    res.json(event)
+    else {
+      res.json(event)
+    }
   } catch (e) {
     next(e)
   }
