@@ -34,19 +34,21 @@ router.delete('/:id', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
-    // TODO: Replace event below with the event from the database using its id
-    // NOTE: It should have the same shape as this one
-    const event = {
-      id: id,
-      locationId: 1,
-      day: 'friday',
-      time: '2pm - 3pm',
-      name: 'Slushie Apocalypse I',
-      description:
-        'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
-    }
+    const event = await db.getEventbyId(id)
+    // const event = {
+    //   id: id,
+    //   locationId: 1,
+    //   day: 'friday',
+    //   time: '2pm - 3pm',
+    //   name: 'Slushie Apocalypse I',
+    //   description:
+    //     'This is totally a description of this really awesome event that will be taking place during this festival at the Yella Yurt. Be sure to not miss the free slushies cause they are rad!',
+    //   ...dbEvent,
+    // }
     // TODO: if there's no event with that id, respond with a 404 instead
-
+    if (!event || !event.id) {
+      res.status(404)
+    }
     res.json(event)
   } catch (e) {
     next(e)

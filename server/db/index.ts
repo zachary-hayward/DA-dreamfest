@@ -43,3 +43,10 @@ export async function deleteEvent(id: number) {
     .delete()
   return rows
 }
+
+export async function getEventbyId(id: number) {
+  const event = await connection('events')
+    .where({id})
+    .first()
+  return event
+}
