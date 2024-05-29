@@ -36,3 +36,10 @@ export async function addNewEvent(event: EventData) {
     .insert({name: event.name, description: event.description, time: event.time, day: event.day, location_id: event.locationId})
   return newEventId[0] as number
 }
+
+export async function deleteEvent(id: number) {
+  const rows = await connection('events')
+    .where({id})
+    .delete()
+  return rows
+}
