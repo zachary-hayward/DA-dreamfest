@@ -130,7 +130,7 @@ mutation that makes PATCH requests to a specific location.
 
 ### 6. Delete events
 
-- [ ] Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.ts`
+- [x] Deleting an event will send an HTTP POST request which will hit your `POST /events/delete` route in `routes/events.ts`
   <details style="padding-left: 2em">
     <summary>More about deleting an event</summary>
     
@@ -140,7 +140,7 @@ mutation that makes PATCH requests to a specific location.
   - The "Delete event" button should be able to delete "Cutest Puppy Awards" (id 4) even though the displayed details are for "Slushie Apocalypse I" as you will find it uses the id provided by the url, not the hardcoded data.
   </details>
 
-- [ ] Build a `deleteEvent` function with an `id` parameter
+- [x] Build a `deleteEvent` function with an `id` parameter
 
 ---
 
