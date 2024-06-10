@@ -57,7 +57,15 @@ export async function deleteEvent(id: number) {
 
 export async function getEventById(id: number) {
   const event = await connection('events')
-    .where({id})
+    .where('id', id)
+    .select(
+      'id',
+      'day',
+      'time',
+      'name',
+      'description',
+      'location_id as locationId'
+    )
     .first()
   return event
 }

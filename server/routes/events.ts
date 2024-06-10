@@ -25,7 +25,7 @@ router.delete('/:id', async (req, res, next) => {
     const id = Number(req.params.id)
     const rowsDeleted = await db.deleteEvent(id)
     console.log(rowsDeleted)
-    res.json(id)
+    res.status(204)
   } catch (e) {
     next(e)
   }
