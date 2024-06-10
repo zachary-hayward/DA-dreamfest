@@ -3,7 +3,6 @@ import { setupApp } from './setup.tsx'
 import { describe, it, expect, beforeAll, afterEach } from 'vitest'
 import { waitFor, screen } from '@testing-library/react'
 import nock from 'nock'
-import userEvent from '@testing-library/user-event'
 
 beforeAll(() => nock.disableNetConnect())
 
@@ -22,7 +21,7 @@ describe('EditEvent', () => {
           description: "This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!"
         })
 
-    const deleteScope = nock('http://localhost:5173')
+    const deleteScope = nock('http://localhost')
       .delete(`/api/v1/events/1`)
       .reply(200)
     
@@ -32,43 +31,37 @@ describe('EditEvent', () => {
         "day": "friday",
         "events": [
           {
-            "id": 1,
-            "description": "This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!",
-            "eventName": "Slushie Apocalypse I",
-            "day": "friday",
-            "time": "2pm - 3pm",
-            "name": "TangleStage",
-            "location_id": 1
-          },
-          {
-            "id": 2,
-            "description": "This event will be taking place at the Yella Yurt. Come see what marvels our championship builders have built over the past 7 days!",
-            "eventName": "LEGO Builder Championships",
-            "day": "friday",
-            "time": "6pm - 7pm",
-            "name": "Yella Yurt",
-            "location_id": 2
+            id: 2,
+            description: "This event will be taking place at the Yella Yurt. Come see what marvels our championship builders have built over the past 7 days!",
+            eventName: "LEGO Builder Championships",
+            day: "friday",
+            time: "6pm - 7pm",
+            name: "Yella Yurt",
+            location_id: 2
           }
         ]
       })
 
-    const {user } = setupApp(`/events/1/edit`)
+    const { user } = setupApp(`/events/1/edit`)
 
-    const deleteButton = await screen.findByTestId('test-delete-event-button')
+    const deleteButton = await screen.findByText('Delete event')
+    // const deleteButton = await screen.findByTestId('test-delete-event-button')
 
     expect(deleteButton).toBeVisible()
     
     // console.log("Before clicking delete button")
     // console.log("Delete button:", deleteButton)
-    await userEvent.click(deleteButton)
+    await user.click(deleteButton)
     console.log("After clicking delete button")
 
-    // expect(scope.isDone()).toBe(true)
+    expect(scope.isDone()).toBe(true)
+    expect(scheduleScope.isDone()).toBe(true)
 
     // await waitFor(() => {
     //   expect(deleteScope.isDone()).toBe(true)
     // })
-    // // expect(deleteScope.isDone()).toBe(true)
+    // await screen.findByText('LEGO Builder Championships')
+    expect(deleteScope.isDone()).toBe(true)
+    console.log(nock.activeMocks())
   })
 })
-console.log(nock.activeMocks())
