@@ -8,7 +8,7 @@ vi.mock('../db/index.ts')
 
 describe('Schedule API', () => {
   it('responds with a list of events for friday', async () => {
-    vi.mocked(db.getEventsForDay).mockImplementation(async (day: string) => {
+    vi.mocked(db.getEventsByDay).mockImplementation(async (day: string) => {
       return [
         {
           id: 1,

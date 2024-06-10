@@ -1,5 +1,6 @@
 import { describe, beforeEach, beforeAll, it, expect } from 'vitest'
-import { connection, getEventsForDay } from '../index.ts'
+import { connection, getEventsByDay, deleteEvent, getEventById } from '../index.ts'
+import { dblClick } from '@testing-library/user-event/dist/cjs/convenience/click.js'
 
 beforeAll(async () => {
   await connection.migrate.latest()
@@ -11,15 +12,14 @@ beforeEach(async () => {
 
 describe('schedule', () => {
   it('has a bunch of events', async () => {
-    const data = await getEventsForDay('friday')
+    const data = await getEventsByDay('friday')
     expect(data).toMatchInlineSnapshot(`
       [
         {
           "day": "friday",
-          "description": "This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!",
+          "description": "Not the biggest stage, but perhaps the most hip.",
           "eventName": "Slushie Apocalypse I",
           "id": 1,
-          "locationId": 1,
           "locationName": "TangleStage",
           "location_id": 1,
           "name": "TangleStage",
@@ -27,10 +27,9 @@ describe('schedule', () => {
         },
         {
           "day": "friday",
-          "description": "This event will be taking place at the Yella Yurt. Come see what marvels our championship builders have built over the past 7 days!",
+          "description": "It's a freakin' yurt! Get in here!",
           "eventName": "LEGO Builder Championships",
           "id": 2,
-          "locationId": 2,
           "locationName": "Yella Yurt",
           "location_id": 2,
           "name": "Yella Yurt",
@@ -38,5 +37,13 @@ describe('schedule', () => {
         },
       ]
     `)
+  })
+})
+
+describe('events', () => {
+  it('deletes an event by id number', async () => {
+    await deleteEvent(1)
+    const actual = await getEventById(1)
+    expect(actual).toBeUndefined()
   })
 })
