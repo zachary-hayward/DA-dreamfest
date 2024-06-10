@@ -7,8 +7,11 @@ export const eventDays = ['friday', 'saturday', 'sunday']
  * @param {string} name
  * @returns string
  */
-export function capitalise(name: string) {
-  return name[0].toUpperCase() + name.substring(1)
+export function capitalise(name: any) {
+  if (typeof(name) === 'string' && name !== '') {
+    return name[0].toUpperCase() + name.substring(1)
+  }
+  return ''
 }
 
 /**
@@ -24,6 +27,11 @@ export function validateDay(
   day: string | undefined,
   days: string[] = eventDays
 ) {
+  //Throw an error if the days isn't actually an array of event days
+  if (!Array.isArray(days) || !days.every(day => typeof day === 'string')) {
+    throw Error('days parameter should be an array of strings')
+
+  }
   // Use the first day as the default value if the day argument isn't valid
   if (typeof day !== 'string') return days[0]
   if (!days.includes(day)) return days[0]
