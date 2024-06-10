@@ -18,11 +18,14 @@ export async function getEventsByDay(day: string) {
   const events: unknown[] = await connection('events')
     .join('locations', 'locations.id', 'events.location_id')
     .select(
-      '*',
+      'events.id as id',
+      'events.description as description',
+      'events.name as eventName',
+      'day',
+      'time',
       'locations.name as locationName',
-      'events.name as eventName'
     )
-    .where({day})
+    .where('day', day)
   return events as EventData[]
 }
 
