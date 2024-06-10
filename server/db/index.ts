@@ -23,7 +23,8 @@ export async function getEventsByDay(day: string) {
       'events.name as eventName',
       'day',
       'time',
-      'locations.name as locationName',
+      'locations.name as name',
+      'locations.id as location_id',
     )
     .where('day', day)
   return events as EventData[]

@@ -4,34 +4,29 @@ import { describe, it, expect, beforeAll, afterEach } from 'vitest'
 import { waitFor, screen } from '@testing-library/react'
 import nock from 'nock'
 
-beforeAll(() => {
-  nock.disableNetConnect()
-})
+beforeAll(() => nock.disableNetConnect())
 
-afterEach(() => {
-  nock.cleanAll()
-})
+afterEach(() => nock.cleanAll())
 
 describe('EditEvent', () => {
   it('should delete the event when the button is clicked', async () => {
-    const eventId = 1
-    nock('http://localhost:5173')
-      .get(`/api/v1/events/${eventId}`)
+    nock('http://localhost')
+      .get(`/api/v1/events/1`)
       .reply(200, {
           id: 1,
           location_id: 1,
-          locationId: 1,
           day: "friday",
           time: "2pm - 3pm",
-          name: "Slushie Apocalypse I",
+          eventName: "Slushie Apocalypse I",
+          name: 'TangleStage',
           description: "This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!"
         })
-    
+
     const deleteScope = nock('http://localhost:5173')
-      .delete(`/api/v1/events/${eventId}`)
+      .delete(`/api/v1/events/1`)
       .reply(200, [])
     
-    const {user} = setupApp(`/events/${eventId}/edit`)
+    const {user} = setupApp(`/events/1/edit`)
 
     console.log(nock.activeMocks())
 

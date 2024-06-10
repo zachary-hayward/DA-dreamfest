@@ -17,20 +17,18 @@ describe('schedule', () => {
       [
         {
           "day": "friday",
-          "description": "Not the biggest stage, but perhaps the most hip.",
+          "description": "This event will be taking place at the TangleStage. Be sure to not miss the free slushies cause they are rad!",
           "eventName": "Slushie Apocalypse I",
           "id": 1,
-          "locationName": "TangleStage",
           "location_id": 1,
           "name": "TangleStage",
           "time": "2pm - 3pm",
         },
         {
           "day": "friday",
-          "description": "It's a freakin' yurt! Get in here!",
+          "description": "This event will be taking place at the Yella Yurt. Come see what marvels our championship builders have built over the past 7 days!",
           "eventName": "LEGO Builder Championships",
           "id": 2,
-          "locationName": "Yella Yurt",
           "location_id": 2,
           "name": "Yella Yurt",
           "time": "6pm - 7pm",
