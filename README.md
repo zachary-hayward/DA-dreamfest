@@ -9,7 +9,7 @@
 - [ ] Show the form
 - [ ] Submit the form
 - [ ] Add a new event
-- [ ]. Delete events
+- [ ] Delete events
 - [ ] Edit events
 - [ ] Add new locations
 - [ ] Delete locations
