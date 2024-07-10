@@ -45,22 +45,15 @@ describe('EditEvent', () => {
     const { user } = setupApp(`/events/1/edit`)
 
     const deleteButton = await screen.findByText('Delete event')
-    // const deleteButton = await screen.findByTestId('test-delete-event-button')
 
     expect(deleteButton).toBeVisible()
     
-    // console.log("Before clicking delete button")
-    // console.log("Delete button:", deleteButton)
     await user.click(deleteButton)
     console.log("After clicking delete button")
 
     expect(scope.isDone()).toBe(true)
     expect(scheduleScope.isDone()).toBe(true)
 
-    // await waitFor(() => {
-    //   expect(deleteScope.isDone()).toBe(true)
-    // })
-    // await screen.findByText('LEGO Builder Championships')
     expect(deleteScope.isDone()).toBe(true)
     console.log(nock.activeMocks())
   })
